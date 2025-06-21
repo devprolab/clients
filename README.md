@@ -16,9 +16,9 @@ A Python Flask web application that retrieves data from a clients database table
 
     Docker installed
 
-    Python 3.x
+    up and running database mariadb container 
 
-    Database with a clients table
+    Database with a clients table 
 
 ## Recommandation 
 optimaziation reason use the image python:3.9-slim 
