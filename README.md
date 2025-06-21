@@ -21,7 +21,7 @@ A Python Flask web application that retrieves data from a clients database table
     Database with a clients table 
 
 ## Recommandation 
-optimaziation reason use the image python:3.9-slim 
+optimaziation reason use the image python:3.9-slim <br/> 
 for security reason create user **webapp** than can be used as default user in the container 
 
 
