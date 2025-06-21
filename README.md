@@ -25,8 +25,30 @@ optimaziation reason use the image python:3.9-slim <br/>
 for security reason create user **webapp** than can be used as default user in the container 
 
 
-## Installation
-Building the Docker Image
+## Setting up environment 
+    Create new directory project 
+      mkdir project 
+
+    Create a Dockerfile 
+      cd project 
+      touch docker file 
+
+    clone this repository 
+      git clone https://github.com/kimynxlab/clients.git 
+
+    execute this commande to chech project tree 
+      student@Docker:~/projet/# tree 
+        .
+        ├── clients
+        │   ├── clients.html
+        │   ├── index.html
+        │   ├── README.md
+        │   ├── requirements.txt
+        │   └── webapp.py
+        └── Dockerfile
+
+## Building docker image using Dockerfile 
+the commandes bellow have to be done using Dockerfile 
 
     Upgrade pip (required before package installation):
       pip install --upgrade pip
@@ -34,11 +56,12 @@ Building the Docker Image
     Install required Python packages:
       pip3 install flask  mysql-connector-python
 
-## Configuration
+    Exposed port is 5000 in TCP
 
-The application requires these environment variables:       
-**these variable can be added to the Dockerfile or injected when running the container**
-**For better flexibility inject them when running a container expet for  FLAS_APP**
+ 
+    The application requires these environment variables:       
+        **these variable can be added to the Dockerfile or injected when running the container**
+        **For better flexibility inject them when running a container expet for  FLAS_APP**
  
  Requirement | Description               | default value      |Required in Dockerfile |
 |------------|---------------------------|--------------------|------------------------
@@ -47,6 +70,10 @@ The application requires these environment variables:
 | DBPASSWORD | password used for DB      | admin              |      no               |
 | DBHOST     | IP add or FQDN of DB host | inspect container  |      no               |
 | DB         | Is the name of database   | webstore           |      no               | 
+
+
+    Entrypoint of the application 
+         ENTRYPOINT ["flask", "run", "--host", "0.0.0.0", "-p", "5000"]
 
 
 ## Building the image :
