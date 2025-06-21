@@ -29,10 +29,10 @@ for security reason create user **webapp** than can be used as default user in t
 Building the Docker Image
 
     Upgrade pip (required before package installation):
-      **pip install --upgrade pip**
+      pip install --upgrade pip
 
     Install required Python packages:
-      **pip3 install flask  mysql-connector-python** 
+      pip3 install flask  mysql-connector-python
 
 ## Configuration
 
@@ -40,19 +40,29 @@ The application requires these environment variables:
 **these variable can be added to the Dockerfile or injected when running the container**
 **For better flexibility inject them when running a container expet for  FLAS_APP**
  
- Requirement | Description               | default value      |
-|------------|---------------------------|--------------------|
-| FLAS_APP   | Path of the application   | /app               |
-| DBUSER     | username used for DB      | admin              |
-| DBPASSWORD | password used for DB      | admin              |
-| DBHOST     | IP add or FQDN of DB host | inspect container  |
-| DB         | Is the name of database   | webstore           | 
+ Requirement | Description               | default value      |Required in Dockerfile |
+|------------|---------------------------|--------------------|------------------------
+| FLAS_APP   | Path of the application   | /app               |      yes              |
+| DBUSER     | username used for DB      | admin              |      no               |
+| DBPASSWORD | password used for DB      | admin              |      no               |
+| DBHOST     | IP add or FQDN of DB host | inspect container  |      no               |
+| DB         | Is the name of database   | webstore           |      no               | 
 
-## Building the image 
-** docker build -t name:tag .** 
+
+## Building the image :
+docker build -t name:tag .
+
 ### example 
-** docker build -t webapp:latest .
+docker build -t webapp:latest .
 
+## Running container example : 
+docker run --name webapp -p 80:5000 \ 
+    -e DBUSER=root \
+    -e DBPASSWORD=root 
+    -e DBHOST=172.16.0.2 \
+    -e DB=clientdb \ 
+
+**Note : you have to have mariadb container up and running with user root and password root**
 
 
 
