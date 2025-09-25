@@ -55,13 +55,13 @@ By the end of this exercise, you will be able to:
    - The Working directory has to be **/app**
    - Create a non-root user to run the application in the future containers named **webappuser**
    - The image has to expose the port **5000** in **tcp** 
-   - Copy all the content of **client** directory into **/app**
+   - Copy all the content of **clients** directory into **/app**
    - The application uses by default the folowing environment variables
      
      --------------------------------------------------------------------------------------------
      |Requirement | Description               | default value      |Required in Dockerfile      |
      |------------|---------------------------|--------------------|-----------------------------
-     | FLAS_APP   | Path of the application   | /app               | yes                        |
+     | FLASK_APP   | Path of the application   | /app              | yes                        |
      | DBUSER     | username used for DB      | admin              | no                         |
      | DBPASSWORD | password used for DB      | admin              | no                         |
      | DBHOST     | IP add or FQDN of DB host | inspect container  | no                         |
