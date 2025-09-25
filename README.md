@@ -61,11 +61,11 @@ By the end of this exercise, you will be able to:
      --------------------------------------------------------------------------------------------
      |Requirement | Description               | default value      |Required in Dockerfile      |
      |------------|---------------------------|--------------------|-----------------------------
-     | FLASK_APP   | Path of the application   | /app              | yes                        |
-     | DBUSER     | username used for DB      | admin              | no                         |
-     | DBPASSWORD | password used for DB      | admin              | no                         |
-     | DBHOST     | IP add or FQDN of DB host | inspect container  | no                         |
-     | DB         | Is the name of database   | webstore           | no                         |
+     | FLASK_APP  | Path of the application   | /app/webapp.py     | yes                        |
+     | DBUSER     | username used for DB      | root               | yes                        |
+     | DBPASSWORD | password used for DB      | admin              | yes                        |
+     | DBHOST     | IP add or FQDN of DB host | localhost          | yes                        |
+     | DB         | Is the name of database   | webstore           | yes                        |
      --------------------------------------------------------------------------------------------
      
    - use the entrypoint as entry for the image **ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "-p", "5000"]**
@@ -76,9 +76,9 @@ By the end of this exercise, you will be able to:
    ```bash
    docker run --name webapp -p 80:5000 \
     -e DBUSER=root \
-    -e DBPASSWORD=root \
+    -e DBPASSWORD=admin \
     -e DBHOST=172.16.0.2 \
-    -e DB=clientdb \
+    -e DB=dockerdb \
     webapp:latest
    
 9. using your web browser try to access to your application using **http://localhost:80**  or **http://<dock-host-ip>:80** 
