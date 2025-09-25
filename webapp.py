@@ -23,7 +23,7 @@ def clients():
     conn.set_charset_collation('utf8mb4', 'utf8mb4_unicode_ci')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM client")
+    cursor.execute("SELECT * FROM clients")
     rows = cursor.fetchall()
 
     column_names = [i[0] for i in cursor.description]
