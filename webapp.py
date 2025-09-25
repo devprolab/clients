@@ -33,9 +33,27 @@ def clients():
 
     return render_template('clients.html', rows=rows, column_names=column_names)
      
-@app.route('/register')
-def register(): 
-    return "Under construction"
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form['name']
+        lastname = request.form['lastname']
+
+        conn = mysql.connector.connect(**db_config)
+        conn.set_charset_collation('utf8mb4', 'utf8mb4_unicode_ci')
+        cursor = conn.cursor()
+
+        # Insert data into clients table
+        cursor.execute("INSERT INTO clients (name, lastname) VALUES (%s, %s)", (name, lastname))
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return redirect(url_for('clients'))  
+
+    return render_template('register.html')  
+
 
 if __name__ == "__main__": 
     app.run() 

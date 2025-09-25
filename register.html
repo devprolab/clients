@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Client</title>
+</head>
+<body>
+    <h1>Register a New Client</h1>
+    <form method="POST">
+        <label for="name">First Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="lastname">Last Name:</label><br>
+        <input type="text" id="lastname" name="lastname" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+    <br>
+    <a href="{{ url_for('clients') }}">View Clients</a>
+</body>
+</html>
